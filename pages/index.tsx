@@ -35,7 +35,7 @@ export default function Home({posts} : { posts: IPost[]}) {
 export async function getStaticProps() {
 
   const client = new ApolloClient({
-    uri: 'http://localhost:1337/graphql',
+    uri: 'https://alberto-strapi-blog.herokuapp.com/graphql',
     cache: new InMemoryCache()
   });
 
