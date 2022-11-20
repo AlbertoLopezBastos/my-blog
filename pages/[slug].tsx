@@ -4,6 +4,8 @@ import { GET_ALL_SLUGS, GET_INDIVIDUAL_POST } from '../graphql/queries';
 import { serialize } from 'next-mdx-remote/serialize';
 import { MDXRemote } from 'next-mdx-remote';
 import { IPost } from '../types';
+import rehypePrism from 'rehype-prism-plus';
+import rehypeCodeTitles from 'rehype-code-titles';
 
 
 const client = new ApolloClient({
@@ -43,13 +45,18 @@ export async function getStaticProps({params} : any) {
 			variables: {slugUrl: params.slug}
 		})
 
-		const attr = data.blogPosts.data[0].attributes;
-		const content = await serialize(attr.content)
+		const attrs = data.blogPosts.data[0].attributes;
+		const content = await serialize(attrs.content, {mdxOptions: {
+			rehypePlugins: [
+				rehypeCodeTitles,
+				rehypePrism
+			]
+		}})
 		return {
 			props: {
 				post: {
 					attributes: {
-						title: attr.title,
+						title: attrs.title,
 						content			
 					}		
 				}
