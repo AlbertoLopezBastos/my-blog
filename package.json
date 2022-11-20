@@ -2,10 +2,6 @@
   "name": "my-blog",
   "version": "0.1.0",
   "private": true,
-  "engines": {
-    "node": "16.x",
-    "yarn": "1.x"
-  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -22,8 +18,6 @@
     "graphql": "^16.6.0",
     "next": "13.0.4",
     "next-mdx-remote": "^4.2.0",
-    "pg": "^8.8.0",
-    "pg-connection-string": "^2.5.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "rehype-code-titles": "^1.1.0",
